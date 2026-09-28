@@ -13,15 +13,38 @@ public class Test {
         this.author = author;
     }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public Teacher getAuthor() { return author; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public List<Question> getQuestions() { return questions; }
+    public Teacher getAuthor() {
+        return author;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
 
     public void addQuestion(Question question) {
-        questions.add(question);
+        if (question != null) {
+            questions.add(question);
+        }
+    }
+
+    public int calculateScore(List<Integer> answers) {
+        int score = 0;
+        for (int i = 0; i < questions.size() && i < answers.size(); i++) {
+            if (questions.get(i).isCorrect(answers.get(i))) {
+                score++;
+            } else {
+                System.out.println("Питання " + (i + 1) + ": неправильна відповідь");
+            }
+        }
+        return score;
     }
 
     @Override

@@ -37,6 +37,17 @@ public class Student {
         results.add(result);
     }
 
+    public double getAverageScore() {
+        if (results.isEmpty()) {
+            return 0;
+        }
+        int sum = 0;
+        for (int i = 0; i < results.size(); i++) {
+            sum += results.get(i).getScore();
+        }
+        return (double) sum / results.size();
+    }
+
     @Override
     public String toString() {
         return "Student{name='" + name + "', group='" + group + "'}";

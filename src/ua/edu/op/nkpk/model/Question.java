@@ -19,7 +19,9 @@ public class Question {
     public List<String> getOptions() { return options; }
 
     public boolean isCorrect(int answerIndex) {
-        return answerIndex == correctIndex;
+        return answerIndex >= 0
+                && answerIndex < options.size()
+                && answerIndex == correctIndex;
     }
 
     @Override
