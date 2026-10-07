@@ -21,4 +21,4 @@ StudyTest
 - https://github.com/ajaymahadeven/Quizzy-App
 
 ## Концептуальна діаграма класів
-![img.png](img.png)!
+![img_1.png](img_1.png)
