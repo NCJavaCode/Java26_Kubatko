@@ -1,7 +1,7 @@
 package ua.edu.op.nkpk.model;
 
 import java.util.List;
-
+import java.util.Objects;
 /**
  * Клас Question описує сутність «Питання» тесту з варіантами
  * відповідей, серед яких один правильний.
@@ -110,5 +110,15 @@ public class Question {
         }
         Question question = (Question) obj;
         return correctIndex == question.correctIndex && points == question.points;
+    }
+    /**
+     * Обчислює хеш-код питання на основі тих самих полів,
+     * що використовуються в методі {@link #equals(Object)}.
+     *
+     * @return хеш-код питання
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(correctIndex, points);
     }
 }
