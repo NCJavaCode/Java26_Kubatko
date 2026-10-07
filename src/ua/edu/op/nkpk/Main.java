@@ -27,6 +27,10 @@ public class Main {
         Result result = new Result(student, test, score, LocalDate.now());
         student.addResult(result);
 
+        test.printQuestionText(q1);
+        test.printQuestionText(null);
+        System.out.println("Питання за індексом 0: " + test.getQuestionAtIndex(0));
+        System.out.println("Питання за індексом 10 (помилковий): " + test.getQuestionAtIndex(10));
         System.out.println("q1.equals(q2): " + q1.equals(q2));
         System.out.println("q1.hashCode() == q2.hashCode(): " + (q1.hashCode() == q2.hashCode()));
         System.out.println(result);

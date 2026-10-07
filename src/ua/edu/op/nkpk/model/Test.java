@@ -77,7 +77,39 @@ public class Test {
             questions.add(question);
         }
     }
+    /**
+     * Повертає питання за індексом, конвертуючи список питань у масив
+     * та звертаючись до його елемента. Обробляє вихід за межі масиву.
+     *
+     * @param index індекс питання, яке потрібно отримати
+     * @return питання за вказаним індексом або {@code null}, якщо індекс некоректний
+     */
+    public Question getQuestionAtIndex(int index) {
+        Question[] questionsArray = questions.toArray(new Question[0]);
+        try {
+            return questionsArray[index];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println("Помилка: вихід за межі масиву. "
+                    + "Допустимі індекси: від 0 до " + (questionsArray.length - 1)
+                    + ", отримано індекс: " + index);
+            return null;
+        }
+    }
 
+    /**
+     * Виводить у консоль текст переданого питання.
+     * Обробляє ситуацію, коли передано {@code null} замість питання.
+     *
+     * @param question питання, текст якого потрібно вивести
+     */
+    public void printQuestionText(Question question) {
+        try {
+            System.out.println("Текст питання: " + question.getText());
+        } catch (NullPointerException e) {
+            System.err.println("Помилка: об'єкт класу Question відсутній (null). "
+                    + "Неможливо отримати текст питання.");
+        }
+    }
     /**
      * Підраховує кількість правильних відповідей студента.
      * Для кожної неправильної відповіді виводить повідомлення в консоль.
