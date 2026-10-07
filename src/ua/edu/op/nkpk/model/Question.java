@@ -18,6 +18,8 @@ public class Question {
 
     /** Індекс правильного варіанта відповіді у списку варіантів. */
     private int correctIndex;
+    /** Кількість балів, яку дає правильна відповідь на питання. */
+    private int points;
 
     /**
      * Створює питання із заданим текстом, варіантами відповідей
@@ -27,12 +29,21 @@ public class Question {
      * @param options      список варіантів відповідей
      * @param correctIndex індекс правильного варіанта (нумерація з нуля)
      */
-    public Question(String text, List<String> options, int correctIndex) {
+    public Question(String text, List<String> options, int correctIndex, int points) {
         this.text = text;
         this.options = options;
         this.correctIndex = correctIndex;
+        this.points = points;
     }
 
+    /**
+     * Повертає кількість балів за правильну відповідь.
+     *
+     * @return кількість балів
+     */
+    public int getPoints() {
+        return points;
+    }
     /**
      * Повертає текст питання.
      *
@@ -81,5 +92,23 @@ public class Question {
     @Override
     public String toString() {
         return "Question{text='" + text + "'}";
+    }
+    /**
+     * Порівнює це питання з іншим об'єктом за примітивними полями
+     * {@code correctIndex} та {@code points}.
+     *
+     * @param obj об'єкт, з яким порівнюється це питання
+     * @return {@code true}, якщо об'єкти рівні за правилом еквівалентності
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Question question = (Question) obj;
+        return correctIndex == question.correctIndex && points == question.points;
     }
 }
