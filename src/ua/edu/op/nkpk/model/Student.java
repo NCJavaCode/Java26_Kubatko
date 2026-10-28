@@ -5,15 +5,13 @@ import java.util.List;
 
 /**
  * Клас Student описує сутність «Студент», який проходить тести
- * та отримує за них результати.
+ * та отримує за них результати. Успадковує від {@link Person}
+ * спільні дані (ім'я) та реалізує власну роль.
  *
  * @author Kubatko
- * @version 1.0
+ * @version 1.1
  */
-public class Student {
-    /** Прізвище та ім'я студента. */
-    private String name;
-
+public class Student extends Person {
     /** Назва навчальної групи студента. */
     private String group;
 
@@ -27,26 +25,18 @@ public class Student {
      * @param group назва групи
      */
     public Student(String name, String group) {
-        this.name = name;
+        super(name);
         this.group = group;
     }
 
     /**
-     * Повертає ім'я студента.
+     * Повертає роль особи в системі.
      *
-     * @return прізвище та ім'я студента
+     * @return рядок «Student»
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Встановлює ім'я студента.
-     *
-     * @param name нове прізвище та ім'я
-     */
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String getRole() {
+        return "Student";
     }
 
     /**
@@ -108,6 +98,6 @@ public class Student {
      */
     @Override
     public String toString() {
-        return "Student{name='" + name + "', group='" + group + "'}";
+        return "Student{name='" + getName() + "', group='" + group + "'}";
     }
 }

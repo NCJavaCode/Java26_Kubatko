@@ -5,15 +5,13 @@ import java.util.List;
 
 /**
  * Клас Teacher описує сутність «Викладач», який створює тести
- * для перевірки знань студентів.
+ * для перевірки знань студентів. Успадковує від {@link Person}
+ * спільні дані (ім'я) та реалізує власну роль.
  *
  * @author Kubatko
- * @version 1.0
+ * @version 1.1
  */
-public class Teacher {
-    /** Прізвище та ім'я викладача. */
-    private String name;
-
+public class Teacher extends Person {
     /** Список тестів, створених викладачем. */
     private List<Test> tests = new ArrayList<>();
 
@@ -23,25 +21,17 @@ public class Teacher {
      * @param name прізвище та ім'я викладача
      */
     public Teacher(String name) {
-        this.name = name;
+        super(name);
     }
 
     /**
-     * Повертає ім'я викладача.
+     * Повертає роль особи в системі.
      *
-     * @return прізвище та ім'я викладача
+     * @return рядок «Teacher»
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Встановлює ім'я викладача.
-     *
-     * @param name нове прізвище та ім'я
-     */
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String getRole() {
+        return "Teacher";
     }
 
     /**
@@ -80,15 +70,5 @@ public class Teacher {
             i++;
         }
         return null;
-    }
-
-    /**
-     * Повертає текстове представлення викладача.
-     *
-     * @return рядок з іменем викладача
-     */
-    @Override
-    public String toString() {
-        return "Teacher{name='" + name + "'}";
     }
 }
