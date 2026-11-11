@@ -55,6 +55,20 @@ public class Question implements Cloneable {
     }
 
     /**
+     * Перевіряє правильність відповіді за її текстом
+     * (перевантажена версія {@link #isCorrect(int)}).
+     *
+     * @param answerText текст обраного варіанта
+     * @return {@code true}, якщо текст збігається з правильним варіантом
+     */
+    public boolean isCorrect(String answerText) {
+        return answerText != null
+                && correctIndex >= 0
+                && correctIndex < options.size()
+                && options.get(correctIndex).equals(answerText);
+    }
+
+    /**
      * Повертає текст питання.
      *
      * @return текст питання

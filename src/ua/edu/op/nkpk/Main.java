@@ -43,5 +43,22 @@ public class Main {
         System.out.println("Клон (конструктор копіювання): " + clonedByConstructor.getOptions());
         System.out.println("original == clonedByClone: " + (original == clonedByClone));
         System.out.println("original.equals(clonedByClone): " + original.equals(clonedByClone));
+        System.out.println("=== Статичний поліморфізм (перевантаження) ===");
+        Question capital = new Question("Столиця України?",
+                Arrays.asList("Львів", "Київ", "Одеса"), 1, 1);
+        System.out.println("isCorrect(int 1): " + capital.isCorrect(1));
+        System.out.println("isCorrect(String \"Київ\"): " + capital.isCorrect("Київ"));
+        System.out.println("isCorrect(String \"Одеса\"): " + capital.isCorrect("Одеса"));
+
+        test.addQuestion("Скільки буде 3 + 3?", Arrays.asList("5", "6", "7"), 1);
+        System.out.println("Питань у тесті після перевантаженого addQuestion: "
+                + test.getQuestions().size());
+        System.out.println("=== Динамічний поліморфізм (перевизначення) ===");
+        Person[] people = {teacher, student};
+        for (Person p : people) {
+            System.out.println(p.getRole());
+            System.out.println(p.describe());
+            System.out.println(p);
+        }
     }
 }

@@ -95,6 +95,17 @@ public class Test {
             return null;
         }
     }
+    /**
+     * Створює питання з переданих даних і додає його до тесту
+     * (перевантажена версія {@link #addQuestion(Question)}).
+     *
+     * @param text         текст питання
+     * @param options      варіанти відповідей
+     * @param correctIndex індекс правильного варіанта
+     */
+    public void addQuestion(String text, List<String> options, int correctIndex) {
+        addQuestion(new Question(text, options, correctIndex, 1));
+    }
 
     /**
      * Виводить у консоль текст переданого питання.
