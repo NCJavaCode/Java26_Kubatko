@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"ua.edu.op.nkpk","l":"Main"},{"p":"ua.edu.op.nkpk.model","l":"Question"},{"p":"ua.edu.op.nkpk.model","l":"Result"},{"p":"ua.edu.op.nkpk.model","l":"Student"},{"p":"ua.edu.op.nkpk.model","l":"Teacher"},{"p":"ua.edu.op.nkpk.model","l":"Test"}];updateSearchResults();
