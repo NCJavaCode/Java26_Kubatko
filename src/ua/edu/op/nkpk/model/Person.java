@@ -28,4 +28,13 @@ public abstract class Person {
     public String toString() {
         return getRole() + "{name='" + name + "'}";
     }
+    /**
+     * Повертає короткий опис особи. Нащадки можуть перевизначити
+     * метод і додати власні подробиці.
+     *
+     * @return рядок з роллю та іменем
+     */
+    public String describe() {
+        return getRole() + ": " + name;
+    }
 }
