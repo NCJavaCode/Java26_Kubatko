@@ -9,14 +9,17 @@ import java.util.List;
  * спільні дані (ім'я) та реалізує власну роль.
  *
  * @author Kubatko
- * @version 1.1
+ * @version 1.2
  */
-public class Student extends Person {
+public class Student extends Person implements Nameble, Summarizable { // НОВЕ: інтерфейси
     /** Назва навчальної групи студента. */
     private String group;
 
     /** Список результатів тестів, які пройшов студент. */
     private List<Result> results = new ArrayList<>();
+
+    /** Назва класу (для інтерфейсу Nameble). */ // НОВЕ
+    private String className = "Student";
 
     /**
      * Створює студента із заданими іменем та групою.
@@ -37,6 +40,16 @@ public class Student extends Person {
     @Override
     public String getRole() {
         return "Student";
+    }
+
+    /**
+     * Повертає опис студента разом із групою.
+     *
+     * @return рядок з роллю, іменем та групою
+     */
+    @Override
+    public String describe() {
+        return super.describe() + ", група " + group;
     }
 
     /**
@@ -89,6 +102,38 @@ public class Student extends Person {
             sum += results.get(i).getScore();
         }
         return (double) sum / results.size();
+    }
+
+    /**
+     * Повертає назву класу.
+     *
+     * @return назва класу
+     */
+    @Override
+    public String getClassName() { // НОВЕ
+        return className;
+    }
+
+    /**
+     * Встановлює назву класу. Порожнє значення ігнорується.
+     *
+     * @param className нова назва класу
+     */
+    @Override
+    public void setClassName(String className) { // НОВЕ
+        if (className != null && !className.trim().isEmpty()) {
+            this.className = className;
+        }
+    }
+
+    /**
+     * Повертає короткий опис студента.
+     *
+     * @return рядок з іменем, групою та середнім балом
+     */
+    @Override
+    public String getSummary() { // НОВЕ
+        return getName() + " (" + group + "), середній бал: " + getAverageScore();
     }
 
     /**

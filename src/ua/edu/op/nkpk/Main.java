@@ -3,8 +3,8 @@ package ua.edu.op.nkpk;
 import ua.edu.op.nkpk.model.*;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -43,6 +43,7 @@ public class Main {
         System.out.println("Клон (конструктор копіювання): " + clonedByConstructor.getOptions());
         System.out.println("original == clonedByClone: " + (original == clonedByClone));
         System.out.println("original.equals(clonedByClone): " + original.equals(clonedByClone));
+
         System.out.println("=== Статичний поліморфізм (перевантаження) ===");
         Question capital = new Question("Столиця України?",
                 Arrays.asList("Львів", "Київ", "Одеса"), 1, 1);
@@ -53,6 +54,7 @@ public class Main {
         test.addQuestion("Скільки буде 3 + 3?", Arrays.asList("5", "6", "7"), 1);
         System.out.println("Питань у тесті після перевантаженого addQuestion: "
                 + test.getQuestions().size());
+
         System.out.println("=== Динамічний поліморфізм (перевизначення) ===");
         Person[] people = {teacher, student};
         for (Person p : people) {
@@ -60,5 +62,31 @@ public class Main {
             System.out.println(p.describe());
             System.out.println(p);
         }
+
+        // НОВЕ: інтерфейси
+        System.out.println("=== Інтерфейси ===");
+        Nameble[] nameables = {student, q1};
+        for (Nameble n : nameables) {
+            System.out.println("Клас: " + n.getClassName());
+        }
+
+        Summarizable[] items = {student, q1};
+        for (Summarizable s : items) {
+            System.out.println(s.getSummary());
+        }
+
+        printInfo(student);
+        printInfo(q1);
+    }
+
+    /**
+     * Виводить назву класу та короткий опис будь-якого об'єкта,
+     * що реалізує обидва інтерфейси. Конкретний тип не відомий.
+     *
+     * @param obj об'єкт, який реалізує Nameble та Summarizable
+     * @param <T> тип об'єкта
+     */
+    private static <T extends Nameble & Summarizable> void printInfo(T obj) { // НОВЕ
+        System.out.println(obj.getClassName() + " -> " + obj.getSummary());
     }
 }

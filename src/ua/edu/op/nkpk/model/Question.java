@@ -9,9 +9,9 @@ import java.util.Objects;
  * відповідей, серед яких один правильний.
  *
  * @author Kubatko
- * @version 1.0
+ * @version 1.2
  */
-public class Question implements Cloneable {
+public class Question implements Cloneable, Nameble, Summarizable { // НОВЕ: інтерфейси
     /** Текст питання. */
     private String text;
 
@@ -23,6 +23,9 @@ public class Question implements Cloneable {
 
     /** Кількість балів, яку дає правильна відповідь на питання. */
     private int points;
+
+    /** Назва класу (для інтерфейсу Nameble). */ // НОВЕ
+    private String className = "Question";
 
     /**
      * Створює питання із заданим текстом, варіантами відповідей,
@@ -115,6 +118,38 @@ public class Question implements Cloneable {
         return answerIndex >= 0
                 && answerIndex < options.size()
                 && answerIndex == correctIndex;
+    }
+
+    /**
+     * Повертає назву класу.
+     *
+     * @return назва класу
+     */
+    @Override
+    public String getClassName() { // НОВЕ
+        return className;
+    }
+
+    /**
+     * Встановлює назву класу. Порожнє значення ігнорується.
+     *
+     * @param className нова назва класу
+     */
+    @Override
+    public void setClassName(String className) { // НОВЕ
+        if (className != null && !className.trim().isEmpty()) {
+            this.className = className;
+        }
+    }
+
+    /**
+     * Повертає короткий опис питання.
+     *
+     * @return рядок з текстом, кількістю варіантів та балами
+     */
+    @Override
+    public String getSummary() { // НОВЕ
+        return text + " [" + options.size() + " варіантів, " + points + " б.]";
     }
 
     /**
