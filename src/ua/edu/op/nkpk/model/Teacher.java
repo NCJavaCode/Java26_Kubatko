@@ -19,15 +19,6 @@ public class Teacher extends Person {
         return "Teacher";
     }
 
-    /**
-     * Повертає опис викладача разом із кількістю створених тестів.
-     *
-     * @return рядок з роллю, іменем та кількістю тестів
-     */
-    @Override
-    public String describe() {
-        return super.describe() + ", створено тестів: " + tests.size();
-    }
 
     public List<Test> getTests() {
         return tests;

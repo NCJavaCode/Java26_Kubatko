@@ -1,7 +1,6 @@
 package ua.edu.op.nkpk.model;
 
 
-
 public abstract class Person {
 
     private String name;
@@ -28,9 +27,5 @@ public abstract class Person {
     @Override
     public String toString() {
         return getRole() + "{name='" + name + "'}";
-    }
-
-    public String describe() {
-        return getRole() + ": " + name;
     }
 }
